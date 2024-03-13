@@ -1,4 +1,11 @@
 import time
+from dataclasses import dataclass
+
+
+@dataclass
+class TestClass:
+    a: int = 1
+    b: str = "B"
 
 
 def timeit(func):
@@ -15,7 +22,9 @@ def timeit(func):
 
 @timeit
 def my_function(sec):
-    time.sleep(sec)
+    p = TestClass()
+    print(p)
+    help(p)
 
 
 if __name__ == "__main__":
