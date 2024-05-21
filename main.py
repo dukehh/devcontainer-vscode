@@ -1,6 +1,8 @@
 import time
 from dataclasses import dataclass
 
+from pandas_datareader import data as wb
+
 
 @dataclass
 class TestClass:
@@ -27,5 +29,17 @@ def my_function(sec):
     help(p)
 
 
+# Dann musst du angeben, welchen Aktienindex du verwenden möchtest:
+
+
+@timeit
+def boerse():
+    ticker_name = "^GSPC"
+    # ^GSPC steht für S&P500, siehe https://finance.yahoo.com/quote/%5EGSPC/
+    ticker = wb.DataReader(ticker_name, start="2010-1-1", data_source="yahoo")
+    print(ticker)
+
+
 if __name__ == "__main__":
-    my_function(2)
+    # my_function(2)
+    boerse()
